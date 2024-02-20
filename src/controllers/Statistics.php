@@ -26,7 +26,6 @@ class Statistics
         $this->chat_id_callback = $chat_id_callback;
         $this->connect = $connect;
         $this->message_id = $message_id;
-
     }
 
     public function Statistics()
