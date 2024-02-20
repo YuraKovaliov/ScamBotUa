@@ -13,7 +13,7 @@ class ComandDatabase
     public $chat_id_callback;
     public $connect;
     public $message_id;
-    public $user;
+
 
     public function __construct($message, $chat_id, $bot, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback,$connect,$message_id)
     {

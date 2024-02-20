@@ -2,7 +2,6 @@
 include 'vendor/autoload.php';
 include 'src/controllers/ComandStart.php';
 include 'src/controllers/ComandDatabase.php';
-include 'src/controllers/ComandKeyboard.php';
 include 'src/models/Tiktok.php';
 include 'src/controllers/Mainmenu.php';
 include 'src/controllers/Helper.php';
@@ -11,13 +10,10 @@ include 'src/controllers/Profile.php';
 include 'src/controllers/Statistics.php';
 include 'src/controllers/Withdraw.php';
 
-
 try {
 
+    //БОТ_ТОКЕН
     define("TG_TOKEN","6833435270:AAHnsmhKw9syPeAir4pyA_wSJZQrz72pWMM");
-
-
-    //$bot = new \TelegramBot\Api\Client(TG_TOKEN);
     $bot = new \TelegramBot\Api\BotApi(TG_TOKEN);
 
     //Получениее данных
@@ -50,16 +46,18 @@ try {
 
 
    if($message == "/start"){
-       $ComandStart->starter();
-       $Database->Database();
+            $ComandStart->starter();
+            $Database->Database();
    }else{
-       $Tiktok->TiktokVideo();
-        $Helper->helper();
-        $Mainmenu->Menu();
-        $Partners->Partners();
-        $Profile->Prifile();
-        $Statistic->Statistics();
-        $Withdraw->Withdraw();
+       $Tiktok->sendVideoTik();
+       $Mainmenu->sendMainMenu();
+            $Withdraw->sendVisestu();
+            $Helper->helper();
+            $Mainmenu->Menu();
+            $Partners->Partners();
+            $Profile->Prifile();
+            $Statistic->Statistics();
+            $Withdraw->Withdraw();
    }
 
 

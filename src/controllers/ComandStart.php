@@ -29,13 +29,32 @@ class comandStart
         $this->User_name = $User_name;
         $this->connect = $connect;
     }
+
+    public function createStarterInline()
+    {
+        return[[['text'=> '👌Ознайомлений','callback_data'=> 'glavnaya']]];
+    }
+
+    public function createStarterText()
+    {
+        return "Вітаю".'   '.$this->firstname."\n\n🔥Ми з'єднуємо авторів контенту в TikTok, і наших користувачів. За підвищення рейтингу ви отримуєте гроші.\n\n👀За кожен перегляд у TikTok ми платимо 3 ₴ гривні.\n\n\n✅ Тисні Ознайомлений, щоб уже почати заробляти.";
+    }
+
+    public function createStarterPhoto()
+    {
+        return "AgACAgIAAxkBAAMXZdOUIg4oEGXLtO-xqDjRKPH1sAIAAh3cMRsNNqFKuyBGj2FrIQ8BAAMCAAN5AAM0BA";
+    }
+
+
+
+
     //Старт
     public function starter()
     {
-        $klava = [[['text'=> '👌Ознайомлений', 'callback_data'=> 'glavnaya']]];
-        $text = "Вітаю".'   '.$this->firstname."\n\n🔥Ми з'єднуємо авторів контенту в TikTok, і наших користувачів. За підвищення рейтингу ви отримуєте гроші.\n\n👀За кожен перегляд у TikTok ми платимо 3 ₴ гривні.\n\n\n✅ Тисні Ознайомлений, щоб уже почати заробляти.";
-        $id_photo = "AgACAgIAAxkBAAMXZdOUIg4oEGXLtO-xqDjRKPH1sAIAAh3cMRsNNqFKuyBGj2FrIQ8BAAMCAAN5AAM0BA";
-        $keyboard45= new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-        $this->bot->sendPhoto($this->chat_id,$id_photo,$text,null,$keyboard45);
+        $klava = $this->createStarterInline();
+        $text = $this->createStarterText();
+        $photo = $this->createStarterPhoto();
+        $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
+        $this->bot->sendPhoto($this->chat_id,$photo,$text,null,$keyboard);
     }
 }

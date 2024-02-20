@@ -31,22 +31,60 @@ class Mainmenu
     }
 
 
+    public function createMainMenuKeyboard()
+    {
+        return [
+            [['text' => "👨‍💻Почати заробляти"]],
+            [['text' => '👤Профіль'],['text' => '📊Статистика']],
+            [['text' => '💳Вивести'],['text' => '💼Партнерам']]];
+    }
+
+
+    public function createMainMenuText()
+    {
+        return "<i style='font-family: Times New Roman, serif;'>Головне меню</i>";
+    }
+
+
+
+    public function sendMainMenu()
+    {
+        switch ($this->callback_query){
+            case 'glavnaya':
+
+                $text = $this->createMainMenuText();
+                $keyboard1 = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($this->createMainMenuKeyboard(), true, true);
+                $this->bot->sendMessage($this->chat_id_callback,$text,'html',false,null,$keyboard1);
+                     break;
+
+            case 'Главное меню':
+
+                $text = $this->createMainMenuText();
+                $keyboard2 = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($this->createMainMenuKeyboard(), true, true);
+                $this->bot->sendMessage($this->chat_id_callback,$text,'html',false,null,$keyboard2);
+                    break;
+        }
+
+
+    }
+
     public function Menu(){
 
-        // главная станица
-        if ($this->callback_query == "glavnaya") {
-            $klava =[[['text' => "👨‍💻Почати заробляти"]],[['text' => '👤Профіль'],['text' => '📊Статистика']],[['text' => '💳Вивести'],['text' => '💼Партнерам']]];
-            $text344 = "<i style='font-family: Times New Roman, serif;'>Головне меню</i>";
-            $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($klava, true, true);
-            $this->bot->sendMessage($this->chat_id_callback, $text344, 'html', false, null, $keyboard);
-        }
+//        // главная станица
+//        if ($this->callback_query == "glavnaya") {
+//            $klava =[[['text' => "👨‍💻Почати заробляти"]],[['text' => '👤Профіль'],['text' => '📊Статистика']],[['text' => '💳Вивести'],['text' => '💼Партнерам']]];
+//            $text344 = "<i style='font-family: Times New Roman, serif;'>Головне меню</i>";
+//            $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($klava, true, true);
+//            $this->bot->sendMessage($this->chat_id_callback, $text344, 'html', false, null, $keyboard);
+//        }
 
-        //ГЛАВНОЕ МЕНЮ
-        if ($this->callback_query == "Главное меню") {
-            $klava =[[['text' => '👨‍💻Почати заробляти']],[['text' => '👤Профіль'],['text' => '📊Статистика']],[['text' => '💳Вивести'],['text' => '💼Партнерам']]];
-            $text344 = "<i style='font-family: Times New Roman, serif;'>Головне меню :</i>";
-            $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($klava, true, true);
-            $this->bot->sendMessage($this->chat_id_callback, $text344, 'html', false, null, $keyboard);
-        }
+
+//        //ГЛАВНОЕ МЕНЮ
+//        if ($this->callback_query == "Главное меню") {
+//            $klava =[[['text' => '👨‍💻Почати заробляти']],[['text' => '👤Профіль'],['text' => '📊Статистика']],[['text' => '💳Вивести'],['text' => '💼Партнерам']]];
+//            $text344 = "<i style='font-family: Times New Roman, serif;'>Головне меню :</i>";
+//            $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($klava, true, true);
+//            $this->bot->sendMessage($this->chat_id_callback, $text344, 'html', false, null, $keyboard);
+       // }
     }
 }
