@@ -5,7 +5,7 @@ class Tiktok
 {
     public $message;
     public $chat_id;
-    public $bote;
+    public $bot;
     public $Photo_id;
     public $callback_query;
     public $username;
@@ -14,11 +14,11 @@ class Tiktok
     public $connect;
     public $message_id;
 
-    public function __construct($message, $chat_id, $bote, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback, $connect, $message_id)
+    public function __construct($message, $chat_id, $bot, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback, $connect, $message_id)
     {
         $this->message = $message;
         $this->chat_id = $chat_id;
-        $this->bote = $bote;
+        $this->bot = $bot;
         $this->Photo_id = $Photo_id;
         $this->callback_query = $callback_query;
         $this->username = $username;
@@ -33,8 +33,9 @@ class Tiktok
     {
             //МАТЕРИАЛ ИЗ TIK-TOK
         $random_video_tiktok = [
+            'BAACAgIAAxkBAAIG3GXUvvZOhN3Xi6BatW7uOnIYcKAVAAJJRAACDTapSmToLNhLvFNUNAQ',
             'BAACAgIAAxkBAAOrZdO098eZVJctRHK_X6BVBqZlgKsAAsRIAAINNqFKHGiBJbK6tE80BA',
-            'BAACAgIAAxkBAAOsZdO1H0sh8UreQD0y7MXp1QWrdjYAAstIAAINNqFKhtmfrtkns8s0BA',
+            'BAACAgIAAxkBAAICfWXT34haTUuiHClNfHVNUtkyjxB-AAISSgACDTahSo-ovY3NrFNrNAQ',
             'BAACAgIAAxkBAAOtZdO1RaJDF-quIvEYnzbaPT3hDooAAs9IAAINNqFKrQkNAAGyo2ieNAQ',
             'BAACAgIAAxkBAAOuZdO1ZiLz3k1VjoFCdZd3oOkIRNQAAtNIAAINNqFKI1y4Levm0nk0BA',
             'BAACAgIAAxkBAAOvZdO1f3HqkXJEyGks0b-4P27oEJoAAtZIAAINNqFKP3qy-2Y5n540BA',
@@ -81,10 +82,10 @@ class Tiktok
             $textvideo = "🔎 Завантаження ТікТоків..";
             $textTiktok = "💰 Ви заробили 3 ₴ гривені за перегляд відео!";
             $keyboard = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-            $this->bote->sendMessage($this->chat_id, $textvideo);
-            $this->bote->sendVideo($this->chat_id, $random_video, $textvideo);
+            $this->bot->sendMessage($this->chat_id, $textvideo);
+            $this->bot->sendVideo($this->chat_id, $random_video, $textvideo);
             sleep(15);
-            $this->bote->sendMessage($this->chat_id, $textTiktok, 'html', false, null, $keyboard);
+            $this->bot->sendMessage($this->chat_id, $textTiktok, 'html', false, null, $keyboard);
             $result_update12 = mysqli_query($this->connect, "UPDATE `Tiktok` SET user_many = user_many + 3 ,video_luking = video_luking + 1 WHERE `user_id` = $this->chat_id");
 
         }
@@ -94,10 +95,10 @@ class Tiktok
             $textvideo = "🔎 Завантаження ТікТоків..";
             $textTiktok = "💰 Ви заробили 3 ₴ гривені за перегляд відео!";
             $keyboard = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-            $this->bote->sendMessage($this->chat_id_callback, $textvideo);
-            $this->bote->sendVideo($this->chat_id_callback, $random_video, $textvideo);
+            $this->bot->sendMessage($this->chat_id_callback, $textvideo);
+            $this->bot->sendVideo($this->chat_id_callback, $random_video, $textvideo);
             sleep(15);
-            $this->bote->sendMessage($this->chat_id_callback, $textTiktok, 'html', false, null, $keyboard);
+            $this->bot->sendMessage($this->chat_id_callback, $textTiktok, 'html', false, null, $keyboard);
             $result_update = mysqli_query($this->connect, "UPDATE `Tiktok` SET user_many = user_many + 3 ,video_luking = video_luking + 1 WHERE `user_id` = $this->chat_id_callback");
         }
 
@@ -107,10 +108,10 @@ class Tiktok
             $textvideo = "🔎 Завантаження ТікТоків..";
             $textTiktok = "💰 Ви заробили 3 ₴ гривені за перегляд відео!";
             $keyboard = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-            $this->bote->sendMessage($this->chat_id_callback, $textvideo);
-            $this->bote->sendVideo($this->chat_id_callback, $random_video, $textvideo);
+            $this->bot->sendMessage($this->chat_id_callback, $textvideo);
+            $this->bot->sendVideo($this->chat_id_callback, $random_video, $textvideo);
             sleep(15);
-            $this->bote->sendMessage($this->chat_id_callback, $textTiktok, 'html', false, null, $keyboard);
+            $this->bot->sendMessage($this->chat_id_callback, $textTiktok, 'html', false, null, $keyboard);
             $result_update = mysqli_query($this->connect, "UPDATE `Tiktok` SET user_many = user_many + 3 ,video_luking = video_luking + 1 WHERE `user_id` = $this->chat_id_callback");
         }
     }

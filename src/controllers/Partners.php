@@ -5,7 +5,7 @@ class Partners
 {
     public $message;
     public $chat_id;
-    public $bote;
+    public $bot;
     public $Photo_id;
     public $callback_query;
     public $username;
@@ -14,11 +14,11 @@ class Partners
     public $connect;
     public $message_id;
 
-    public function __construct($message, $chat_id, $bote, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback, $connect, $message_id)
+    public function __construct($message, $chat_id, $bot, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback, $connect, $message_id)
     {
         $this->message = $message;
         $this->chat_id = $chat_id;
-        $this->bote = $bote;
+        $this->bot = $bot;
         $this->Photo_id = $Photo_id;
         $this->callback_query = $callback_query;
         $this->username = $username;
@@ -36,8 +36,8 @@ class Partners
             $text098 = "BAACAgIAAxkBAAIEzWXUHJ8qlHT01IbXskBDL0ZGbQU-AAKNSgACDTahSrDncWUG7Z6pNAQ";
             $text09 = '👷🏻‍♀️';
             $keyboard = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-            $this->bote->sendMessage($this->chat_id,$text09);
-            $this->bote->sendDocument($this->chat_id,$text098,'👷🏻‍♀️Цей розділ поки що у розробці..',null,$keyboard);
+            $this->bot->sendMessage($this->chat_id,$text09);
+            $this->bot->sendDocument($this->chat_id,$text098,'👷🏻‍♀️Цей розділ поки що у розробці..',null,$keyboard);
         }
     }
 }

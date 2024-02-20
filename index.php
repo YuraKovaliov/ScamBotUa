@@ -17,8 +17,8 @@ try {
     define("TG_TOKEN","6833435270:AAHnsmhKw9syPeAir4pyA_wSJZQrz72pWMM");
 
 
-    $bot = new \TelegramBot\Api\Client(TG_TOKEN);
-    $bote = new \TelegramBot\Api\BotApi(TG_TOKEN);
+    //$bot = new \TelegramBot\Api\Client(TG_TOKEN);
+    $bot = new \TelegramBot\Api\BotApi(TG_TOKEN);
 
     //Получениее данных
     $Update = json_decode(file_get_contents("php://input"),true);
@@ -37,15 +37,15 @@ try {
     $connect = mysqli_connect('localhost', 'root', '', 'test_rbotest u');
 
     //Обьекты класса
-    $ComandStart = new comandStart($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$message_id,$User_name,$connect);
-    $Database = new ComandDatabase($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Tiktok = new Tiktok($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Mainmenu = new Mainmenu($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Helper = new Helper($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Partners = new Partners($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Profile = new Profile($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Statistic = new Statistics($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Withdraw = new Withdraw($message,$chat_id,$bote,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $ComandStart = new comandStart($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$message_id,$User_name,$connect);
+    $Database = new ComandDatabase($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Tiktok = new Tiktok($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Mainmenu = new Mainmenu($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Helper = new Helper($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Partners = new Partners($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Profile = new Profile($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Statistic = new Statistics($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+    $Withdraw = new Withdraw($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
 
 
 

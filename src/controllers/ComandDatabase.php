@@ -5,7 +5,7 @@ class ComandDatabase
 {
     public $message;
     public $chat_id;
-    public $bote;
+    public $bot;
     public $Photo_id;
     public $callback_query;
     public $username;
@@ -15,11 +15,11 @@ class ComandDatabase
     public $message_id;
     public $user;
 
-    public function __construct($message, $chat_id, $bote, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback,$connect,$message_id)
+    public function __construct($message, $chat_id, $bot, $Photo_id, $callback_query, $username, $firstname, $chat_id_callback,$connect,$message_id)
     {
         $this->message = $message;
         $this->chat_id = $chat_id;
-        $this->bote = $bote;
+        $this->bot = $bot;
         $this->Photo_id = $Photo_id;
         $this->callback_query = $callback_query;
         $this->username = $username;
@@ -34,7 +34,7 @@ class ComandDatabase
             $select = "SELECT * FROM `Tiktok` WHERE user_id = $this->chat_id";
             $result_select = mysqli_query($this->connect, $select);
             if ($result_select === false) {
-                $this->bote->sendMessage($this->chat_id, "Ошибка в запросе SELECT: " . mysqli_error($this->connect));
+                $this->bot->sendMessage($this->chat_id, "Ошибка в запросе SELECT: " . mysqli_error($this->connect));
             } else {
                 // Если запрос SELECT выполнен успешно
                 $row_count = mysqli_num_rows($result_select);
@@ -45,7 +45,7 @@ class ComandDatabase
                     if ($result_update === true) {
                         // Обновление выполнено успешно
                     } else {
-                        $this->bote->sendMessage($this->chat_id, "Ошибка в запросе UPDATE: " . mysqli_error($this->connect));
+                        $this->bot->sendMessage($this->chat_id, "Ошибка в запросе UPDATE: " . mysqli_error($this->connect));
                     }
                 } else {
                     // Записи нет, выполняем INSERT
