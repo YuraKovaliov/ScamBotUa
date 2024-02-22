@@ -38,15 +38,7 @@ $Route = new Router();
             $Database->Database();
    }else{
        $Route->routers($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-//       $Tiktok->sendVideoTik();
-//       $Mainmenu->sendMainMenu();
-//            $Withdraw->sendVisestu();
-//            $Helper->helper();
-//            $Mainmenu->Menu();
-//            $Partners->Partners();
-//            $Profile->Prifile();
-//            $Statistic->Statistics();
-//            $Withdraw->Withdraw();
+
    }
 
 
