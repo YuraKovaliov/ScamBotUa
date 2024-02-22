@@ -4,10 +4,7 @@
 class Partners
 {
     public function KeyBoard(){
-        $klava = [
-            [['text' => "🧬Згенерувати", 'callback_data' => 'link']],
-            [['text' => "🔚Головне меню", 'callback_data' => 'Главное меню']]
-        ];
+        $klava = [[['text' => "🧬Згенерувати", 'callback_data' => 'link']], [['text' => "🔚Головне меню", 'callback_data' => 'Главное меню']]];
         return $keyboard = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
     }
 

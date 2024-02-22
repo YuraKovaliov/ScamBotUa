@@ -5,9 +5,11 @@ include 'src/controllers/ComandDatabase.php';
 include 'Router.php';
 
 try {
-
-    //БОТ_ТОКЕН
     define("TG_TOKEN","6833435270:AAHnsmhKw9syPeAir4pyA_wSJZQrz72pWMM");
+    define("HOME_NAME","localhost");
+    define("USER_NAME","root");
+    define("DATA_BASE","test_rbotest u");
+
     $bot = new \TelegramBot\Api\BotApi(TG_TOKEN);
 
     //Получениее данных
@@ -22,29 +24,19 @@ try {
     $callbak = $Update['callback_query']['data'];
     $message_id = $Update['callback_query']['message']['message_id'];
     $User_name = $Update['message']['chat']['first_name'];
-
-
-
     //БД поключение
-    $connect = mysqli_connect('localhost', 'root', '', 'test_rbotest u');
+    $connect = mysqli_connect(HOME_NAME, USER_NAME, '', DATA_BASE);
 
-    //Обьекты класса
-
-    //$Database = new ComandDatabase($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-
-
+    //УСЛОВИЯ
    if($message == "/start"){
        $ComandStart = new comandStart();
        $Database = new ComandDatabase();
-            $ComandStart->starter($bot,$chat_id,$firstname);
-            $Database->Database($chat_id,$connect,$bot,$username,$firstname);
+       $ComandStart->starter($bot,$chat_id,$firstname);
+       $Database->Database($chat_id,$connect,$bot,$username,$firstname);
    }else{
        $Route = new Router();
        $Route->routers($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-
    }
-
-
 
     $bot->on(function (\TelegramBot\Api\Types\Update $update) use ($bot) {
 

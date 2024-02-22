@@ -52,22 +52,6 @@ class Mainmenu
         $text = $this->createMainMenuText();
         $keyboard1 = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($this->createMainMenuKeyboard(), true, true);
         $bot->sendMessage($chat_id_callback,$text,'html',false,null,$keyboard1);
-     //   switch ($this->callback_query){
-       //     case 'glavnaya':
-
-//                $text = $this->createMainMenuText();
-//                $keyboard1 = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($this->createMainMenuKeyboard(), true, true);
-//                $this->bot->sendMessage($this->chat_id_callback,$text,'html',false,null,$keyboard1);
-                  //   break;
-
-           // case 'Главное меню':
-
-//                $text = $this->createMainMenuText();
-//                $keyboard2 = new \TelegramBot\Api\Types\ReplyKeyboardMarkup($this->createMainMenuKeyboard(), true, true);
-//                $this->bot->sendMessage($this->chat_id_callback,$text,'html',false,null,$keyboard2);
-                    //break;
-       // }
-
 
     }
 
