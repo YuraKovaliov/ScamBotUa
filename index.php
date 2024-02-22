@@ -2,13 +2,7 @@
 include 'vendor/autoload.php';
 include 'src/controllers/ComandStart.php';
 include 'src/controllers/ComandDatabase.php';
-include 'src/models/Tiktok.php';
-include 'src/controllers/Mainmenu.php';
-include 'src/controllers/Helper.php';
-include 'src/controllers/Partners.php';
-include 'src/controllers/Profile.php';
-include 'src/controllers/Statistics.php';
-include 'src/controllers/Withdraw.php';
+include 'Router.php';
 
 try {
 
@@ -29,35 +23,30 @@ try {
     $message_id = $Update['callback_query']['message']['message_id'];
     $User_name = $Update['message']['chat']['first_name'];
 
+
+
     //БД поключение
     $connect = mysqli_connect('localhost', 'root', '', 'test_rbotest u');
 
     //Обьекты класса
     $ComandStart = new comandStart($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$message_id,$User_name,$connect);
     $Database = new ComandDatabase($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Tiktok = new Tiktok($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Mainmenu = new Mainmenu($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Helper = new Helper($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Partners = new Partners($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Profile = new Profile($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Statistic = new Statistics($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
-    $Withdraw = new Withdraw($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
 
-
-
+$Route = new Router();
    if($message == "/start"){
             $ComandStart->starter();
             $Database->Database();
    }else{
-       $Tiktok->sendVideoTik();
-       $Mainmenu->sendMainMenu();
-            $Withdraw->sendVisestu();
-            $Helper->helper();
-            $Mainmenu->Menu();
-            $Partners->Partners();
-            $Profile->Prifile();
-            $Statistic->Statistics();
-            $Withdraw->Withdraw();
+       $Route->routers($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+//       $Tiktok->sendVideoTik();
+//       $Mainmenu->sendMainMenu();
+//            $Withdraw->sendVisestu();
+//            $Helper->helper();
+//            $Mainmenu->Menu();
+//            $Partners->Partners();
+//            $Profile->Prifile();
+//            $Statistic->Statistics();
+//            $Withdraw->Withdraw();
    }
 
 
