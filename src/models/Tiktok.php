@@ -1,5 +1,6 @@
 <?php
 
+
 class Tiktok
 {
     public function Random32(){
@@ -83,10 +84,10 @@ class Tiktok
     }
 
     public function sendVideoTik1($bot,$connect,$chat_id_callback){
+
                 $bot->sendMessage($chat_id_callback, $this->createVideoText());
                 sleep(1);
                 $bot->sendVideo($chat_id_callback, $this->Random32(), $this->createVideoText());
-                //$keyboard1 = new TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava1);
                 sleep(16);
                 $bot->sendMessage($chat_id_callback, $this->createTiktokText(), 'html', false, null, $this->createInlineKeybordTY());
                 $result_update121 = mysqli_query($connect, "UPDATE `Tiktok` SET user_many = user_many + 3 ,video_luking = video_luking + 1 WHERE `user_id` = $chat_id_callback");
