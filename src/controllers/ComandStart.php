@@ -32,7 +32,8 @@ class comandStart
 
     public function createStarterInline()
     {
-        return[[['text'=> '👌Ознайомлений','callback_data'=> 'glavnaya']]];
+        $klava =[[['text'=> '👌Ознайомлений','callback_data'=> 'glavnaya']]];
+       return $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
     }
 
     public function createStarterText()
@@ -51,10 +52,9 @@ class comandStart
     //Старт
     public function starter()
     {
-        $klava = $this->createStarterInline();
-        $text = $this->createStarterText();
-        $photo = $this->createStarterPhoto();
-        $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
-        $this->bot->sendPhoto($this->chat_id,$photo,$text,null,$keyboard);
+      //  $klava = $this->createStarterInline();
+
+        //$keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup($klava);
+        $this->bot->sendPhoto($this->chat_id,$this->createStarterPhoto(),$this->createStarterText(),null,$this->createStarterInline());
     }
 }
