@@ -6,6 +6,7 @@ include  'src/controllers/Partners.php';
 include 'src/controllers/Stat.php';
 include  'src/controllers/Withdraw.php';
 include 'src/controllers/Podpiska.php';
+include 'src/controllers/LinkPat.php';
 include 'src/models/Tiktok.php';
 
 class Router
@@ -81,6 +82,12 @@ class Router
             case 'vereficete':
             $vis1 = new Podpiska();
             $vis1->sendPodpizdon($bot,$chat_id_callback,$message_id);
+                break;
+        }
+        switch ($callback_query ){
+            case 'link':
+                $linkp = new LinkPat();
+                $linkp->sendLinkPat($chat_id_callback,$bot,$message_id,$connect);
                 break;
         }
     }

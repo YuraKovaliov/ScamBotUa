@@ -29,14 +29,17 @@ try {
     $connect = mysqli_connect('localhost', 'root', '', 'test_rbotest u');
 
     //Обьекты класса
-    $ComandStart = new comandStart($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$message_id,$User_name,$connect);
-    $Database = new ComandDatabase($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
 
-$Route = new Router();
+    //$Database = new ComandDatabase($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
+
+
    if($message == "/start"){
-            $ComandStart->starter();
-            $Database->Database();
+       $ComandStart = new comandStart();
+       $Database = new ComandDatabase();
+            $ComandStart->starter($bot,$chat_id,$firstname);
+            $Database->Database($chat_id,$connect,$bot,$username,$firstname);
    }else{
+       $Route = new Router();
        $Route->routers($message,$chat_id,$bot,$Photo_id,$callback_query,$username,$firstname,$chat_id_callback,$connect,$message_id);
 
    }
